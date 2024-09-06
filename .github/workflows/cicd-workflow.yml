@@ -68,5 +68,4 @@ jobs:
       - name: Rollback on failure
         if: failure()
         run: |
-          PREV_TASK_DEFINITION=$(aws ecs describe-services --cluster narasimha-dev --services myapp-service --query "services[0].taskDefinition" --output text)
-          aws ecs update-service --cluster narasimha-dev --service myapp-service --task-definition $PREV_TASK_DEFINITION --force-new-deployment
+          echo " "
