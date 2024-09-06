@@ -69,4 +69,3 @@ jobs:
         if: failure()
         run: |
           aws ecs update-service --cluster narasimha-dev --service myapp-service --force-new-deployment --rollback
-v
