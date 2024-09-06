@@ -1,12 +1,10 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:375388872190:task-definition/myapp-taskdefinition:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:375388872190:task-definition/myapp-taskdefinition:1",
     "containerDefinitions": [
         {
             "name": "app",
             "image": "375388872190.dkr.ecr.ap-south-1.amazonaws.com/webapp",
-            "cpu": 1024,
-            "memory": 3072,
-            "memoryReservation": 1024,
+            "cpu": 0,
             "portMappings": [
                 {
                     "name": "5000",
@@ -29,21 +27,16 @@
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
-                    "awslogs-region": "ap-south-1",
+                    "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
             },
-            "systemControls": [],
-            "resourceRequirements": [
-                {
-                    "value": "1",
-                    "type": "GPU"
-                }
-            ]
+            "systemControls": []
         }
     ],
     "family": "myapp-taskdefinition",
+    "taskRoleArn": "arn:aws:iam::375388872190:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::375388872190:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
@@ -66,7 +59,7 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
         },
         {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -83,7 +76,8 @@
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2"
+        "EC2",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
         "EC2"
@@ -94,7 +88,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-05T17:26:08.874Z",
+    "registeredAt": "2024-09-06T14:03:20.037Z",
     "registeredBy": "arn:aws:iam::375388872190:root",
     "tags": []
 }
