@@ -1,8 +1,8 @@
 name: CICD
 
-on:
-  push:
-    branches: [main]
+# on:
+#   push:
+#     branches: [main]
 
 jobs:
   build-and-deploy:
@@ -62,10 +62,9 @@ jobs:
       # Step 7: Run integration tests
       - name: Run integration tests
         run: |
-          echo "hello"
-
+          curl -f http://my-app-alb-<url>/health || exit 1
       # Step 8: Rollback on failure
       - name: Rollback on failure
         if: failure()
         run: |
-          echo "fuu"
+          aws ecs update-service --cluster narasimha-dev --service myapp-service --force-new-deployment --rollback
