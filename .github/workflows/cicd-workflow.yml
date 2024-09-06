@@ -68,4 +68,4 @@ jobs:
       - name: Rollback on failure
         if: failure()
         run: |
-          echo " "
+          echo "fuu"
