@@ -1,43 +1,19 @@
-# Nodejs app with rest and graphql example
+Step-1:  
+Create an ECS cluster with the cluster, task definition file and service.
 
-An example of GraphQL queries/mutations with Node and Express js.
+Step-2: 
+Create an GitHub Repository with the application and the DockerFile with the multistage build
 
-With GraphQL, clients can specify exactly what data they need, and the server responds with only that data, reducing the amount of data transferred over the network.
+Step-3: 
+Create an GitHub Actions script with the stages  
+Step 1: Checkout source 
+Step 2: Configure AWS credentials 
+Step 3: Login to Amazon ECR 
+Step 4: Build, tag, and push image to Amazon ECR 
+Step 5: Update ECS task definition with the new image 
+Step 6: Deploy the updated ECS task definition 
+Step 7: Run integration tests 
+Step 8: Rollback on failure
 
-Rest API Endpoint for get all users: http://localhost:5000/rest/getAllUsers
-
-GraphQL Endpont: http://localhost:5000/graphql
-
-Query for below scenarios: 
-
-1. Get All Users with query operation
-
-query{
-  getAllUsers{
-    id
-    email
-  }
-}
-
-2. Get single user details
-
-query{
-  findUserById(id:1000){
-    id
-    firstName
-    lastName
-    email
-  }
-}
-
-3. Create User with mutation operation
-
-mutation{
-  createUser(firstName:"sachin",lastName:"purohit",email:"sachin@sachin.com",password:"password"){
-    id
-    firstName
-    lastName
-    email
-  }
-}
-
+Step-4: 
+Verify the status 
